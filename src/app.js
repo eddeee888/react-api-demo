@@ -1,11 +1,11 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-import SearchContainer from "./containers/SearchContainer";
+import SearchPage from "./pages/search/search.js";
 
 const App = () => {
   return (
     <Switch>
-      <Route exact path="/" component={SearchContainer} />
+      <Route exact path="/" component={SearchPage} />
     </Switch>
   );
 };

@@ -1,8 +1,8 @@
 import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import * as ActionCreators from "./../store/search/actions";
-import * as SearchSelectors from "./../store/search/reducer";
+import * as ActionCreators from "./../../../store/search/actions";
+import * as SearchSelectors from "./../../../store/search/reducer";
 import SearchComponent from "../components/SearchComponent";
 
 class SearchContainer extends React.PureComponent {
