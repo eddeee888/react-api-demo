@@ -1,9 +1,11 @@
 import React from "react";
-import SearchContainer from "./containers/SearchContainer";
+import SearchBoxContainer from "./containers/SearchBoxContainer";
+import ArticleListContainer from "./containers/ArticleListContainer";
 
 const Search = () => (
   <div>
-    <SearchContainer />
+    <SearchBoxContainer />
+    <ArticleListContainer />
   </div>
 );
 

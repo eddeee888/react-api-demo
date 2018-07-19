@@ -1,7 +1,7 @@
 import React from "react";
 import TextField from "./../../../common/components/TextField";
 
-const SearchComponent = ({ searchText, searchTextOnChange }) => {
+const SearchBoxComponent = ({ searchText, searchTextOnChange }) => {
   return (
     <div>
       <TextField
@@ -14,4 +14,4 @@ const SearchComponent = ({ searchText, searchTextOnChange }) => {
   );
 };
 
-export default SearchComponent;
+export default SearchBoxComponent;

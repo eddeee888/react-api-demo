@@ -3,22 +3,22 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as ActionCreators from "./../../../store/search/actions";
 import * as SearchSelectors from "./../../../store/search/reducer";
-import SearchComponent from "../components/SearchComponent";
+import SearchBoxComponent from "../components/SearchBoxComponent";
 
-class SearchContainer extends React.PureComponent {
+class SearchBoxContainer extends React.PureComponent {
   constructor(props) {
     super(props);
 
     this._searchTextOnChange = this._searchTextOnChange.bind(this);
   }
   _searchTextOnChange(e) {
-    const { setSearchText } = this.props;
-    setSearchText(e.target.value);
+    const { setAndSearchText } = this.props;
+    setAndSearchText(e.target.value);
   }
   render() {
     const { searchText } = this.props;
     return (
-      <SearchComponent
+      <SearchBoxComponent
         searchText={searchText}
         searchTextOnChange={this._searchTextOnChange}
       />
@@ -36,4 +36,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(SearchContainer);
+)(SearchBoxContainer);
