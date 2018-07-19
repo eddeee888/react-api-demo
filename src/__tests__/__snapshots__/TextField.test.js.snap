@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TextField renders correctly 1`] = `
+<div
+  className="MuiFormControl-root-1 MuiFormControl-fullWidth-4 TestName"
+>
+  <label
+    className="MuiFormLabel-root-10 MuiInputLabel-root-5 MuiInputLabel-formControl-6 MuiInputLabel-animated-9 MuiInputLabel-shrink-8"
+    data-shrink={true}
+    htmlFor="TestId"
+  >
+    TestLabel
+  </label>
+  <div
+    className="MuiInput-root-15 MuiInput-fullWidth-22 MuiInput-formControl-16 MuiInput-underline-19"
+  >
+    <input
+      aria-invalid={false}
+      className="MuiInput-input-23"
+      disabled={false}
+      id="TestId"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      placeholder="TestPlaceholder"
+      type="text"
+      value="TestValue"
+    />
+  </div>
+</div>
+`;

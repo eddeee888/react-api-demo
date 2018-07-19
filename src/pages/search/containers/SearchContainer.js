@@ -8,13 +8,19 @@ import SearchComponent from "../components/SearchComponent";
 class SearchContainer extends React.PureComponent {
   constructor(props) {
     super(props);
+
+    this._searchTextOnChange = this._searchTextOnChange.bind(this);
+  }
+  _searchTextOnChange(e) {
+    const { setSearchText } = this.props;
+    setSearchText(e.target.value);
   }
   render() {
-    const { searchText, setSearchText } = this.props;
+    const { searchText } = this.props;
     return (
       <SearchComponent
         searchText={searchText}
-        searchTextOnChange={e => setSearchText(e.target.value)}
+        searchTextOnChange={this._searchTextOnChange}
       />
     );
   }
