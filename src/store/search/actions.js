@@ -1,6 +1,5 @@
 import * as types from "./types";
 import * as SearchSelectors from "./reducer";
-import { fetchContent } from "./../../services/Guardian";
 
 /********** Action creators **********/
 const setSearchText = value => ({
@@ -8,9 +7,9 @@ const setSearchText = value => ({
   value
 });
 
-const updateArticleList = articles => ({
-  type: types.UPDATE_ARTICLE_LIST,
-  articles
+const fetchArticles = query => ({
+  type: types.FETCH_ARTICLES,
+  query
 });
 
 const addSelectedArticle = articleObject => ({
@@ -30,22 +29,7 @@ const removeSelectedArticle = articleId => ({
  */
 export const setAndSearchText = value => (dispatch, getState) => {
   dispatch(setSearchText(value));
-  dispatch(fetchGuardianContent(value));
-};
-
-const fetchGuardianContent = (value, page) => (dispatch, getState) => {
-  fetchContent(value)
-    .then(response => {
-      if (response.statusCode === 200) {
-        const articles = JSON.parse(response.body).response.results;
-        dispatch(updateArticleList(articles));
-      } else {
-        console.error("Unable to send request to Guardian");
-      }
-    })
-    .catch(error => {
-      console.error("Unexpected error in setAndSearchText");
-    });
+  dispatch(fetchArticles(value));
 };
 
 /**

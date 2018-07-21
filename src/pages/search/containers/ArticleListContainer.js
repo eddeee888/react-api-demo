@@ -10,10 +10,11 @@ class ArticleListContainer extends PureComponent {
     super(props);
   }
   render() {
-    const { articleList } = this.props;
+    const { articleList, isFetching } = this.props;
 
     return (
       <ArticleListComponent
+        isFetching={isFetching}
         articleList={articleList !== null ? articleList.toJS() : null}
       />
     );
@@ -24,7 +25,8 @@ const mapDispatchToProps = dispatch => {
   return bindActionCreators(ActionCreators, dispatch);
 };
 const mapStateToProps = state => ({
-  articleList: SearchSelectors.getArticleList(state)
+  articleList: SearchSelectors.getArticleList(state),
+  isFetching: SearchSelectors.getIsFetching(state)
 });
 
 export default connect(

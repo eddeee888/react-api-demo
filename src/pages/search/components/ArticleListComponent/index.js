@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import SectionedArticleDisplay from "./_SectionedArticleDisplay";
 
-const ArticleListComponent = ({ articleList }) => {
+const ArticleListComponent = ({ articleList, isFetching }) => {
   //hasArticles can have 3 values:
   //- null means user has not start searching
   //- empty array means it does not have articles
@@ -16,15 +16,25 @@ const ArticleListComponent = ({ articleList }) => {
 
   return (
     <div>
-      {hasArticles === null && <div>Start typing to search for article</div>}
-      {hasArticles === false && <div>No result</div>}
-      {hasArticles && <SectionedArticleDisplay articleList={articleList} />}
+      {isFetching && (
+        <span>Please wait while our racoons rummage through records...</span>
+      )}
+      {!isFetching && (
+        <div>
+          {hasArticles === null && (
+            <div>Start typing to search for article</div>
+          )}
+          {hasArticles === false && <div>No result</div>}
+          {hasArticles && <SectionedArticleDisplay articleList={articleList} />}
+        </div>
+      )}
     </div>
   );
 };
 
 ArticleListComponent.propTypes = {
-  articleList: PropTypes.array
+  articleList: PropTypes.array,
+  isFetching: PropTypes.bool
 };
 
 export default ArticleListComponent;

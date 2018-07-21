@@ -19,24 +19,35 @@ class ArticleListCheckboxesComponent extends React.Component {
   }
   render() {
     const { sectionedList } = this.state;
-    const { selectedArticles, toggleArticleInSelectedArticles } = this.props;
+    const {
+      selectedArticles,
+      toggleArticleInSelectedArticles,
+      isFetching
+    } = this.props;
     return (
       <div>
-        {Object.keys(sectionedList).map(sectionId => {
-          return (
-            <div key={sectionId}>
-              {sectionedList[sectionId].articles.map(article => {
-                return (
-                  <Checkbox
-                    key={article.id}
-                    checked={selectedArticles[article.id] ? true : false}
-                    onChange={() => toggleArticleInSelectedArticles(article)}
-                  />
-                );
-              })}
-            </div>
-          );
-        })}
+        {isFetching && <span />}
+        {!isFetching && (
+          <div>
+            {Object.keys(sectionedList).map(sectionId => {
+              return (
+                <div key={sectionId}>
+                  {sectionedList[sectionId].articles.map(article => {
+                    return (
+                      <Checkbox
+                        key={article.id}
+                        checked={selectedArticles[article.id] ? true : false}
+                        onChange={() =>
+                          toggleArticleInSelectedArticles(article)
+                        }
+                      />
+                    );
+                  })}
+                </div>
+              );
+            })}
+          </div>
+        )}
       </div>
     );
   }

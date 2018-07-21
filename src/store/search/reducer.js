@@ -6,13 +6,16 @@ import moment from "moment";
 const initialState = fromJS({
   searchText: "",
   articleList: null,
-  selectedArticles: {}
+  selectedArticles: {},
+  isFetching: false,
+  hasFetchError: false
 });
 
 export default createReducer(initialState, {
   [types.SET_SEARCH_TEXT]: (state, { value }) => state.set("searchText", value),
-  [types.UPDATE_ARTICLE_LIST]: (state, { articles }) => {
+  [types.FETCH_ARTICLES_SUCCEEDED]: (state, { articles }) => {
     //reset state to reset index
+    state = state.set("isFetching", false).set("hasFetchError", false);
     state = state.set("articleList", fromJS([]));
     for (const article of articles) {
       state = state.update("articleList", list =>
@@ -32,6 +35,10 @@ export default createReducer(initialState, {
     }
     return state;
   },
+  [types.FETCH_ARTICLES_REQUESTED]: state =>
+    state.set("isFetching", true).set("hasFetchError", false),
+  [types.FETCH_ARTICLES_FAILED]: state =>
+    state.set("isFetching", false).set("hasFetchError", true),
   [types.ADD_ARTICLE_TO_SELECTED_LIST]: (state, { articleObject }) =>
     state.setIn(["selectedArticles", articleObject.id], articleObject),
   [types.REMOVE_ARTICLE_FROM_SELECTED_LIST]: (state, { articleId }) =>
@@ -51,4 +58,12 @@ export function getArticleList(state) {
 
 export function getSelectedArticles(state) {
   return state.search.get("selectedArticles");
+}
+
+export function getIsFetching(state) {
+  return state.search.get("isFetching");
+}
+
+export function getHasFetchError(state) {
+  return state.search.get("hasFetchError");
 }
