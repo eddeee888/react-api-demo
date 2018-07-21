@@ -1,4 +1,5 @@
 import React from "react";
+import styled from "styled-components";
 import PropTypes from "prop-types";
 import SectionedArticleDisplay from "./_SectionedArticleDisplay";
 
@@ -17,7 +18,7 @@ const ArticleListComponent = ({ articleList, isFetching }) => {
   return (
     <div>
       {isFetching && (
-        <span>Please wait while our racoons rummage through records...</span>
+        <div>Please wait while our racoons rummage through records...</div>
       )}
       {!isFetching && (
         <div>
