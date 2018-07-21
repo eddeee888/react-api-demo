@@ -1,3 +1,4 @@
-import createReducer from "./_createReducer.js";
+import createReducer from "./_createReducer";
+import isEmptyObject from "./_isEmptyObject";
 
-export { createReducer };
+export { createReducer, isEmptyObject };

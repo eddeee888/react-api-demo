@@ -2,19 +2,21 @@ import React from "react";
 import PropTypes from "prop-types";
 import { A } from "./../../../../common/components/ui";
 
-const ArticleRow = ({ title, link, dateOfPublication }) => {
+const ArticleDetails = ({ title, link, dateOfPublication }) => {
   return (
     <div>
-      <A href={link}>{title}</A>
-      <span>{dateOfPublication}</span>
+      <div>
+        <A href={link}>{title}</A>
+      </div>
+      <div>Published date: {dateOfPublication}</div>
     </div>
   );
 };
 
-ArticleRow.propTypes = {
+ArticleDetails.propTypes = {
   title: PropTypes.string,
   link: PropTypes.string,
   dateOfPublication: PropTypes.string
 };
 
-export default ArticleRow;
+export default ArticleDetails;

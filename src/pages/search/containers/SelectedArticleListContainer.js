@@ -10,6 +10,11 @@ class SelectedArticleListContainer extends PureComponent {
     super(props);
   }
   render() {
+    /*  NOTE: 
+        we are using `toggleArticleInSelectedArticles` selected article OFF,
+        we can create another thunk function to specifically turn it off, doing so wil make it idempotent but 
+        in this case, we are removing the article anyways, so there's no point
+    */
     const { selectedArticles, toggleArticleInSelectedArticles } = this.props;
 
     return (

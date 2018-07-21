@@ -1,19 +1,26 @@
 import React from "react";
+import styled from "styled-components";
 import { withPageWrapper } from "./../common/HOCs";
 import SearchBoxContainer from "./containers/SearchBoxContainer";
 import ArticleListContainer from "./containers/ArticleListContainer";
-import ArticleListCheckboxesContainer from "./containers/ArticleListCheckboxesContainer";
 import SelectedArticleListContainer from "./containers/SelectedArticleListContainer";
 
+const StyledMainWrapper = styled.div`
+  margin-bottom: 3em;
+`;
+
+const StyledSearchAndListWrapper = styled.div`
+  padding: 0 2em;
+`;
+
 const Search = () => (
-  <div>
-    <SearchBoxContainer />
-    <div>
+  <StyledMainWrapper>
+    <StyledSearchAndListWrapper>
+      <SearchBoxContainer />
       <ArticleListContainer />
-      <ArticleListCheckboxesContainer />
-    </div>
+    </StyledSearchAndListWrapper>
     <SelectedArticleListContainer />
-  </div>
+  </StyledMainWrapper>
 );
 
 export default withPageWrapper(Search);

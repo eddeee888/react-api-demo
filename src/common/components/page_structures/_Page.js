@@ -10,7 +10,12 @@ const StyledPage = styled.div`
   padding: 0;
   margin: 0;
   color: ${textColor};
+  line-height: 1.5em;
   ${media.medium`font-size: 16px`};
+
+  * {
+    box-sizing: border-box;
+  }
 `;
 
 const Page = ({ children, ...rest }) => {

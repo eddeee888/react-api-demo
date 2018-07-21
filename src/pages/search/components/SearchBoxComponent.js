@@ -7,7 +7,6 @@ const SearchBoxComponent = ({ searchText, searchTextOnChange }) => {
     <div>
       <TextField
         label="Search"
-        placeholder="Start typing to search..."
         value={searchText}
         onChange={searchTextOnChange}
       />
