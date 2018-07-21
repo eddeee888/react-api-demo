@@ -1,35 +1,29 @@
 import React from "react";
 import PropTypes from "prop-types";
-import ArticleRow from "./_ArticleRow";
+import SectionedArticleDisplay from "./_SectionedArticleDisplay";
 
 const ArticleListComponent = ({ articleList }) => {
-  let hasArticles = false;
-  if (articleList && articleList.length > 0) {
+  //hasArticles can have 3 values:
+  //- null means user has not start searching
+  //- empty array means it does not have articles
+  //- non empty array means ther are some values to be shown
+  let hasArticles = null;
+  if (articleList && articleList.length == 0) {
+    hasArticles = false;
+  } else if (articleList && articleList.length > 0) {
     hasArticles = true;
   }
-  console.log();
+
   return (
     <div>
-      <div>
-        <div>Title</div>
-        <div>Date of publication</div>
-        <div />
-      </div>
-      {!hasArticles && <div>No result</div>}
-      {hasArticles &&
-        articleList.map(article => (
-          <ArticleRow
-            key={article.id}
-            title={article.title}
-            link={article.link}
-            dateOfPublication={article.dateOfPublication}
-          />
-        ))}
+      {hasArticles === null && <div>Start typing to search for article</div>}
+      {hasArticles === false && <div>No result</div>}
+      {hasArticles && <SectionedArticleDisplay articleList={articleList} />}
     </div>
   );
 };
 
-ArticleRow.propTypes = {
+ArticleListComponent.propTypes = {
   articleList: PropTypes.array
 };
 

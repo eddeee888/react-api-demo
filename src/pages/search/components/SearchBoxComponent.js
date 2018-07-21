@@ -1,5 +1,6 @@
 import React from "react";
-import TextField from "./../../../common/components/TextField";
+import PropTypes from "prop-types";
+import { TextField } from "./../../../common/components/ui";
 
 const SearchBoxComponent = ({ searchText, searchTextOnChange }) => {
   return (
@@ -12,6 +13,11 @@ const SearchBoxComponent = ({ searchText, searchTextOnChange }) => {
       />
     </div>
   );
+};
+
+SearchBoxComponent.propTypes = {
+  searchText: PropTypes.string, //this is the value to be changed
+  searchTextOnChange: PropTypes.func // this is the function to change searchText
 };
 
 export default SearchBoxComponent;

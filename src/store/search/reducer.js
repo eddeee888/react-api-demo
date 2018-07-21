@@ -5,7 +5,8 @@ import moment from "moment";
 
 const initialState = fromJS({
   searchText: "",
-  articleList: []
+  articleList: null,
+  selectedArticles: {}
 });
 
 export default createReducer(initialState, {
@@ -23,13 +24,20 @@ export default createReducer(initialState, {
             dateOfPublication: moment(article.webPublicationDate).format(
               "DD/MM/YYYY"
             ),
-            sectionId: article.sectionId
+            sectionId: article.sectionId,
+            sectionName: article.sectionName
           })
         )
       );
     }
     return state;
-  }
+  },
+  [types.ADD_ARTICLE_TO_SELECTED_LIST]: (state, { articleObject }) =>
+    state.setIn(["selectedArticles", articleObject.id], articleObject),
+  [types.REMOVE_ARTICLE_FROM_SELECTED_LIST]: (state, { articleId }) =>
+    state.update("selectedArticles", selectedArticles =>
+      selectedArticles.delete(articleId)
+    )
 });
 
 /* Selectors/Getters */
@@ -39,4 +47,8 @@ export function getSearchText(state) {
 
 export function getArticleList(state) {
   return state.search.get("articleList");
+}
+
+export function getSelectedArticles(state) {
+  return state.search.get("selectedArticles");
 }

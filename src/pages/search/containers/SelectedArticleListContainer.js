@@ -3,24 +3,21 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as ActionCreators from "./../../../store/search/actions";
 import * as SearchSelectors from "./../../../store/search/reducer";
-import SearchBoxComponent from "./../components/SearchBoxComponent";
+import SelectedArticleListComponent from "../components/SelectedArticleListComponent";
 
-class SearchBoxContainer extends PureComponent {
+class SelectedArticleListContainer extends PureComponent {
   constructor(props) {
     super(props);
-
-    this._searchTextOnChange = this._searchTextOnChange.bind(this);
-  }
-  _searchTextOnChange(e) {
-    const { setAndSearchText } = this.props;
-    setAndSearchText(e.target.value);
   }
   render() {
-    const { searchText } = this.props;
+    const { selectedArticles, toggleArticleInSelectedArticles } = this.props;
+
     return (
-      <SearchBoxComponent
-        searchText={searchText}
-        searchTextOnChange={this._searchTextOnChange}
+      <SelectedArticleListComponent
+        selectedArticles={
+          selectedArticles !== null ? selectedArticles.toJS() : null
+        }
+        toggleArticleInSelectedArticles={toggleArticleInSelectedArticles}
       />
     );
   }
@@ -30,10 +27,10 @@ const mapDispatchToProps = dispatch => {
   return bindActionCreators(ActionCreators, dispatch);
 };
 const mapStateToProps = state => ({
-  searchText: SearchSelectors.getSearchText(state)
+  selectedArticles: SearchSelectors.getSelectedArticles(state)
 });
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(SearchBoxContainer);
+)(SelectedArticleListContainer);
