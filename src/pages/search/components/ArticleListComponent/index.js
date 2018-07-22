@@ -36,7 +36,7 @@ const ArticleListComponent = ({
         <div>
           {isFetching && (
             <StyledResultWrapper>
-              Please wait while our racoons rummage through records...
+              <i>Please wait while our racoons rummage through records...</i>
             </StyledResultWrapper>
           )}
           {!isFetching && (
@@ -44,7 +44,11 @@ const ArticleListComponent = ({
               {hasArticles === null && (
                 <div>Start typing to search for articles</div>
               )}
-              {hasArticles === false && <div>No result</div>}
+              {hasArticles === false && (
+                <div>
+                  <i>No result</i>
+                </div>
+              )}
               {hasArticles && (
                 <SectionedArticleDisplay
                   articleList={articleList}
