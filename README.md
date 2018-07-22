@@ -8,7 +8,7 @@ This app takes a query from user and calls the Guardian API to retrieve related 
 
 ## Technologies used
 
-React and related framework:
+React and related frameworks:
 
 - React
 - Redux
