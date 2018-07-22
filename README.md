@@ -12,15 +12,15 @@ React and related frameworks:
 
 - React
 - Redux
-- React router
-- Redux thunk
-- Redux saga
-- Immutable JS
+- React router: to handle routes of a single page application
+- Redux thunk: acts as action handlers for action creators
+- Redux saga: handle side effects
+- Immutable JS: to handle data immutability plus making it easier to compare non-primitive data types like arrays and objects
 
 UI/Design elements:
 
 - Material UI
-- Styled components
+- Styled components: enables CSS-in-JS
 
 Testing:
 
@@ -32,7 +32,7 @@ Service API:
 
 Helpers/Utils:
 
-- moment.js
+- moment.js: handle date formatting
 
 Bundler:
 
