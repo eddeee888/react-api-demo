@@ -44,4 +44,12 @@ Bundler:
 - `npm install`
 - `npm run start`
 
-  Webpack dev server will run the app on http://localhost:8080/
+  Webpack dev server will run the app in production mode on http://localhost:8080/
+
+  To run in development mode with hot module reload:
+
+  - `npm run watch`
+
+## TODOs
+
+- Add more tests to cover all reducers, actions, sagas, etc.
