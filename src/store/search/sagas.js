@@ -10,7 +10,7 @@ const fetchArticleSucceeded = articles => ({
   type: types.FETCH_ARTICLES_SUCCEEDED,
   articles
 });
-const fetchArticleFailed = articles => ({
+const fetchArticleFailed = () => ({
   type: types.FETCH_ARTICLES_FAILED
 });
 

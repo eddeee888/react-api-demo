@@ -11,6 +11,7 @@ const ArticleListComponent = ({
   articleList,
   selectedArticles,
   isFetching,
+  hasError,
   toggleArticleInSelectedArticles
 }) => {
   //hasArticles can have 3 values:
@@ -26,25 +27,36 @@ const ArticleListComponent = ({
 
   return (
     <div>
-      {isFetching && (
+      {hasError && (
         <StyledResultWrapper>
-          Please wait while our racoons rummage through records...
+          <i>Something has gone wrong! Our raccoons are lost!</i>
         </StyledResultWrapper>
       )}
-      {!isFetching && (
-        <StyledResultWrapper>
-          {hasArticles === null && (
-            <div>Start typing to search for articles</div>
+      {!hasError && (
+        <div>
+          {isFetching && (
+            <StyledResultWrapper>
+              Please wait while our racoons rummage through records...
+            </StyledResultWrapper>
           )}
-          {hasArticles === false && <div>No result</div>}
-          {hasArticles && (
-            <SectionedArticleDisplay
-              articleList={articleList}
-              selectedArticles={selectedArticles}
-              toggleArticleInSelectedArticles={toggleArticleInSelectedArticles}
-            />
+          {!isFetching && (
+            <StyledResultWrapper>
+              {hasArticles === null && (
+                <div>Start typing to search for articles</div>
+              )}
+              {hasArticles === false && <div>No result</div>}
+              {hasArticles && (
+                <SectionedArticleDisplay
+                  articleList={articleList}
+                  selectedArticles={selectedArticles}
+                  toggleArticleInSelectedArticles={
+                    toggleArticleInSelectedArticles
+                  }
+                />
+              )}
+            </StyledResultWrapper>
           )}
-        </StyledResultWrapper>
+        </div>
       )}
     </div>
   );
@@ -54,6 +66,7 @@ ArticleListComponent.propTypes = {
   articleList: PropTypes.array,
   selectedArticles: PropTypes.object,
   isFetching: PropTypes.bool,
+  hasError: PropTypes.bool,
   toggleArticleInSelectedArticles: PropTypes.func
 };
 

@@ -14,11 +14,13 @@ class ArticleListContainer extends PureComponent {
       articleList,
       selectedArticles,
       isFetching,
+      hasError,
       toggleArticleInSelectedArticles
     } = this.props;
 
     return (
       <ArticleListComponent
+        hasError={hasError}
         isFetching={isFetching}
         articleList={articleList !== null ? articleList.toJS() : null}
         selectedArticles={
@@ -36,7 +38,8 @@ const mapDispatchToProps = dispatch => {
 const mapStateToProps = state => ({
   articleList: SearchSelectors.getArticleList(state),
   selectedArticles: SearchSelectors.getSelectedArticles(state),
-  isFetching: SearchSelectors.getIsFetching(state)
+  isFetching: SearchSelectors.getIsFetching(state),
+  hasError: SearchSelectors.getHasFetchError(state)
 });
 
 export default connect(
