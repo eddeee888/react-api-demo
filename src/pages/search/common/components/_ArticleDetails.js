@@ -8,7 +8,9 @@ class ArticleDetails extends PureComponent {
     return (
       <div>
         <div>
-          <A href={link}>{title}</A>
+          <A target="_blank" href={link}>
+            {title}
+          </A>
         </div>
         <div>Published date: {dateOfPublication}</div>
       </div>

@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "start": "wzrd index.js --port 3000 --pushstate -- -t reactify",
-    "build": "webpack --mode production",
+    "build": "webpack --progress --display-error-details --mode production",
+    "start": "webpack-dev-server --progress --display-error-details --mode production --open",
     "watch": "webpack-dev-server --mode development --open --hot"
   },
   "keywords": [],
