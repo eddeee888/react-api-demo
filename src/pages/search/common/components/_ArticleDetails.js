@@ -5,7 +5,6 @@ import { A } from "./../../../../common/components/ui";
 class ArticleDetails extends PureComponent {
   render() {
     const { title, link, dateOfPublication } = this.props;
-    console.log(title);
     return (
       <div>
         <div>

@@ -1,6 +1,6 @@
-import uut from "../reducer";
-import { Reducer } from "redux-testkit";
 import { fromJS } from "immutable";
+import { Reducer } from "redux-testkit";
+import uut from "../reducer";
 import * as types from "../types";
 
 const initialState = {
@@ -13,7 +13,7 @@ const initialState = {
 
 describe("store/search/reducer", () => {
   it("should have initial state", () => {
-    expect(uut()).toEqual(fromJS(initialState));
+    expect(uut()).toEqual(initialState);
   });
 
   it("should not affect state", () => {
